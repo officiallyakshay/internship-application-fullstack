@@ -34,7 +34,8 @@ async function handleRequest(request) {
     let request = new Request(data.variants[rand])
     let result = await fetch(request)
     result = new Response(result.body, result)
-    
+    result.headers.set('set-cookie', "id= " + rand.toString() + "; Expires=Wed, 21 October 2020 07:28:00 GMT; Secure; HttpOnly")
+
     var htmlwriter = new HTMLRewriter()
     htmlwriter
       .on('title', new ElementHandler())
